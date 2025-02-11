@@ -1,0 +1,44 @@
+Setup Instructions
+1. Prerequisites
+  	Azure account with appropriate permissions.
+	  Terraform CLI installed on your local machine.
+	  Azure DevOps organization set up for pipelines.
+2. Infrastructure
+	 Clone the repository containing the Terraform code: 
+	  git clone <repo-link>
+	  cd infrastructure
+  Apply the Terraform scripts: 
+	  terraform init
+	  terraform apply
+3. CI/CD Pipeline
+	  Navigate to Azure DevOps and set up a new pipeline.
+	  Connect your repository and use the provided pipeline.yaml.
+4. Monitoring
+	  Navigate to Azure Monitor and Log Analytics Workspace.
+	  Add Grafana as a visualization tool (optional).
+5. Data Processing
+	  Connect to the Azure SQL Database.
+	  Run the SQL scripts in the data-processing folder.
+________________________________________
+Troubleshooting Guide
+1.	Terraform Issues:
+o	Ensure correct Azure credentials are configured using the az login command.
+o	Check for syntax errors in Terraform files.
+2.	Pipeline Failures:
+o	Verify Azure DevOps service connections for deploying to AKS.
+o	Check the logs for missing secrets or misconfigured steps.
+3.	Database Connection Issues:
+o	Ensure your IP is whitelisted in the SQL Server firewall settings.
+o	Verify the connection string credentials.
+4.	Monitoring Alerts:
+o	Validate that metrics are being collected in Log Analytics Workspace.
+o	Ensure correct thresholds are set for alerts.
+________________________________________
+Design Decisions and Trade-offs
+1.	Terraform for IaC: 
+o	Chosen for its modularity and multi-cloud support.
+2.	Azure DevOps: 
+o	Selected for its seamless integration with Azure resources.
+3.	Grafana for Dashboards: 
+o	Provides rich visualization capabilities and customization.
+________________________________________
