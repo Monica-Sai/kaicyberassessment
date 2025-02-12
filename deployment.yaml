@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kaicyber-app
+  labels:
+    app: kaicyber-app
+spec:
+  replicas: 2  # Number of pods
+  selector:
+    matchLabels:
+      app: kaicyber-app
+  template:
+    metadata:
+      labels:
+        app: kaicyber-app
+    spec:
+      containers:
+      - name: kaicyber-app
+        image: kaicyberacr.azurecr.io/kaicyber-app:$(Build.BuildId) # Replace with your ACR URL
+        ports:
+        - containerPort: 5000 # Update based on your application
+        env:
+        - name: ENVIRONMENT
+          value: "production" # Example environment variable
